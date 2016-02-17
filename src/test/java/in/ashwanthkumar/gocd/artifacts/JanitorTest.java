@@ -37,7 +37,7 @@ public class JanitorTest {
                 )
         ).setDefaultPipelineVersions(10);
 
-        when(client.allPipelineNames()).thenReturn(
+        when(client.allPipelineNames("")).thenReturn(
                 Lists.of("pipeline1", "pipeline2", "pipeline3", "pipeline4")
         );
         List<PipelineConfig> pipelines = janitor.pipelinesNotInConfiguration(client, config);
