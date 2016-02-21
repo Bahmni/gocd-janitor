@@ -28,7 +28,6 @@ public class JanitorTest {
     Janitor janitor = new Janitor(mock(Action.class));
 
     @Test
-    @Ignore
     public void shouldReturnPipelinesNotInConfiguration() {
         MinimalisticGoClient client = mock(MinimalisticGoClient.class);
         JanitorConfiguration config = new JanitorConfiguration().setPipelines(
@@ -37,7 +36,8 @@ public class JanitorTest {
                         new PipelineConfig("pipeline2", 5),
                         new PipelineConfig("pipeline3", 5)
                 )
-        ).setDefaultPipelineVersions(10);
+        ).setDefaultPipelineVersions(10)
+                .setPipelinePrefix("");
 
         when(client.allPipelineNames("")).thenReturn(
                 Lists.of("pipeline1", "pipeline2", "pipeline3", "pipeline4")
